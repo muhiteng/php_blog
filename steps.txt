@@ -1,0 +1,32 @@
+
+1.download free theme 
+2.create folder in xampp\htdocs\php_pure_blog
+3.edit forder by vscode as Editor
+4.run php Server and my sql by XAMPP Control pannel
+3. link to project is : 
+http://localhost/php_pure_blog/
+4.make main page index.php
+5. make directory includes put in it header.php, footer.php,sidebar.php
+6.make the layout by add header.php,foolter.php,sidebar.php in all  frontend pages
+7. divide the project to 2 sections
+  a.Frontend For users with specific layout no need to authentication now ,
+     but we can develop it by authentication  authorization (Roles and permissin system)
+  b.Backend for admin to add articles need authentication to log it
+8.create datebase named (Blog_test) and type utf8_general_ci to support arabic 
+9. Design database with tables : categories,articles,comments,users
+10 . add columns to tables and constrains (primary keys,ForienKeys ) and buil Relations
+  a.table categories(id,title,description,status,rank)
+	=id primary key
+  b.table articles (id,title,text,category_id,user_id,status,rank,created_at,updated_at,deleted_at)
+	=id primary key
+	=category_id foriegn key(categories)
+	=user_id foriegn key(users)
+  c.table comments (id,contributor_name,email,text,article_id,show,active,parent_id,created_at,deleted_at)
+	=id primary key
+	=article_id foriegn key(articles)
+	=parent_id foriegn key(comments)
+  d.table users (id,name,email,password,status,role_id)
+11. make directory admin for administrator and includes ,asset folders
+11. create dbconfig.php file for connect to database in directory admin/includes/dbconfig.php
+  // if connection faild may an alert .
+12.make directory asset and put in it folders (css,js,images,fonts,uploads)
