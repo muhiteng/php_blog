@@ -1,0 +1,1 @@
+Show post details with it comments

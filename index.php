@@ -15,7 +15,7 @@
         <?php include 'includes/footer.php'; ?>
         <?php include 'includes/header.php'; ?>
 
-Article  page
+Index  page
 
 <section class="section wb">
     <div class="container">

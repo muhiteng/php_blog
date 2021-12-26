@@ -1,0 +1,11 @@
+I now work on Laravel framework with advanced level with
+multi authentication and authorization  and use design pattern repository with interfaces and implement class
+my work multi language and privilege systems with real time notification
+and use Redis for cache
+all systems i build was with backup and schedule commands
+provide APIs for work on frontend frameworks (Vue,Nust,React,Next)
+all systems has a authentication ,activity and error logs
+/////////////////////////////
+I have now a Blog system with categories,posts, and wide queries and search system
+with slug with 3 languages(Arabic,English,Turkish) and show data by tag,category ,recent,archive
+and related posts and wide ideas

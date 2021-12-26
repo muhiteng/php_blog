@@ -1,0 +1,4 @@
+Here i will create MVC(Model View Controller) pure php
+i will create 3 categories to each section
+and create model for get data to database
+the model may get data from one table or more and can reuse
