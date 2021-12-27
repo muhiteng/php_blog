@@ -1,0 +1,6 @@
+1.show post details
+2.show main comments to post ;where its parent_id=null
+3.show other posts
+4.edit post and update post
+5.add new post
+6.delete post

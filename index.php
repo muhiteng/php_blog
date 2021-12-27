@@ -1,7 +1,7 @@
 <?php
 //Global setting
 require_once 'config/global.php';
-
+$_SESSION['user_id']=1;
 //We load the controller and execute the action
 if(isset($_GET["controller"])){
     // We load the instance of the corresponding controller

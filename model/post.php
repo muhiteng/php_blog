@@ -121,17 +121,15 @@ class Post {
         return $resultados;
 
     }
+    public function get_other_posts($post_id){
 
-    // get all comments by category id
-    public function getAll_comments_by_category_id($post_id){
-
-        $consultation = $this->Connection->prepare("SELECT contributor_name,email,text,post_id,status,rank,created_at
-                                        FROM comments
-                                        WHERE comments.show =1 and status=1 and parent_id is null and  post_id=:post_id 
-                                        ORDER by created_at DESC" );
-        $consultation->execute(); $consultation->execute(array(
+        $consultation = $this->Connection->prepare("SELECT posts.id,posts.title,posts.text,posts.category_id,
+                                                    categories.title,posts.user_id,users.username,posts.status,
+                                                    posts.created_at 
+                                                FROM users,categories,posts 
+                                                where users.id=posts.user_id and categories.id=posts.category_id and posts.id <> :post_id" );
+        $consultation->execute(array(
             "post_id" => $post_id
-
         ));
         /* Fetch all of the remaining rows in the result set */
         $resultados = $consultation->fetchAll();
@@ -140,10 +138,28 @@ class Post {
 
     }
 
+    // get all comments by category id
+    public function getAll_comments_by_post_id($post_id){
+
+        $consultation = $this->Connection->prepare("SELECT contributor_name,email,text,post_id,status,rank,created_at
+                                        FROM comments
+                                        WHERE comments.show =1 and status=1 and parent_id is null and  post_id=:post_id 
+                                        ORDER by created_at DESC" );
+         $consultation->execute(array(
+            "post_id" => $post_id
+
+        ));
+        /*Fetch all of the remaining rows in the result set*/
+        $resultado = $consultation->fetchAll();
+        $this->Connection = null; //connection close
+        return $resultado;
+
+    }
+
 
     public function getById($id){
         $consultation = $this->Connection->prepare("SELECT posts.id,posts.title,posts.text,posts.category_id,
-                                                    categories.title,posts.user_id,users.username,posts.status,
+                                                    categories.title as category_name,posts.user_id,users.username,posts.status,
                                                     posts.created_at 
                                                 FROM users,categories,posts 
                                                 where users.id=posts.user_id and categories.id=posts.category_id and  posts.id = :id");
