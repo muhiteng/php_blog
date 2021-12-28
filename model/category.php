@@ -82,7 +82,7 @@ class Category {
 
         $resultado = $consultation->execute(array(
             "id" => $this->id,
-            "title " => $this->title ,
+            "title" => $this->title ,
             "description" => $this->description,
             "status" => $this->status,
             "rank" => $this->rank
@@ -119,10 +119,9 @@ class Category {
     public function getAll_with_posts_count(){
 
         $consultation = $this->Connection->prepare("SELECT categories.id,categories.title,description,
-                            count(posts.category_id) as posts_count,categories.status,categories.rank
-                             FROM categories ,posts
-                              where categories.id=posts.category_id 
-                              GROUP by posts.category_id order by rank DESC" );
+                            categories.status,categories.rank
+                             FROM categories 
+                               order by rank DESC" );
         $consultation->execute();
         /* Fetch all of the remaining rows in the result set */
         $resultados = $consultation->fetchAll();
@@ -134,9 +133,10 @@ class Category {
 
     
     public function getById($id){
-        $consultation = $this->Connection->prepare("SELECT id,title,description,status,rank 
+        $consultation = $this->Connection->prepare("SELECT id,title,description,status,rank, (SELECT COUNT(id) from posts where category_id=:cat_id) as posts_count 
                                                 FROM " . $this->table . "  WHERE id = :id");
         $consultation->execute(array(
+            "cat_id" => $id,
             "id" => $id
         ));
         /*Fetch all of the remaining rows in the result set*/

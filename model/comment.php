@@ -11,6 +11,7 @@ class Comment {
     private $parent_id ;
     private $status ;
     private $show ;
+    private $rank ;
 
     public function __construct($Connection) {
 		$this->Connection = $Connection;
@@ -77,23 +78,31 @@ class Comment {
     public function setshow ($show) {
         $this->show  = $show;
     }
+    public function getrank () {
+        return $this->rank ;
+    }
+
+    public function setrank ($rank) {
+        $this->rank  = $rank;
+    }
+
 
 
 
     public function save(){
 
-        $consultation = $this->Connection->prepare("INSERT INTO " . $this->table . " (contributor_name,email,text,post_id,parent_id,status,show,rank,created_at)
-                                        VALUES (:contributor_name,:email,:text,:post_id,:parent_id,:status,:show,:rank,:created_at)");
+        $consultation = $this->Connection->prepare("INSERT INTO " . $this->table . " (contributor_name,email,text,post_id)
+                                        VALUES (:contributor_name,:email,:text,:post_id)");
         $result = $consultation->execute(array(
             "contributor_name" => $this->contributor_name,
             "email" => $this->email,
             "text" => $this->text,
             "post_id" => $this->post_id,
-            "parent_id" => $this->parent_id,
-            "status" => $this->status,
-            "show" => $this->show,
-            "rank" => $this->rank,
-            "created_at" => date("Y/m/d")
+           // "parent_id" => $this->parent_id,
+          //  "status" => $this->status,
+           // "show" => $this->show//,
+          //  "rank" => $this->rank//,
+         //   "created_at" => date("Y/m/d")
         ));
         $this->Connection = null;
 

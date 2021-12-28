@@ -1,0 +1,2 @@
+1. CRUD category
+2.add comment from post details

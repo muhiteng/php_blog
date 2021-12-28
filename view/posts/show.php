@@ -5,13 +5,17 @@ Show post details with it comments ========
         <h3>Post details</h3>
         <hr/>
         <input type="hidden" name="id" value="<?php echo $data["post"]->id ?>"/>
-        ID: <input type="text" name="Name" value="<?php echo $data["post"]->id ?>" class="form-control"/><br>
-        Title: <input type="text" name="Name" value="<?php echo $data["post"]->title ?>" class="form-control"/><br>
-        Category : <input type="text" name="Name" value="<?php echo $data["post"]->category_name ?>" class="form-control"/><br>
-        Text: <input type="text" name="Surname" value="<?php echo $data["post"]->text ?>" class="form-control"/><br>
-        Status: <input type="text" name="email" value="<?php echo $data["post"]->status==1?'Active':'Inactive' ?>" class="form-control"/><br>
-        date: <input type="text" name="phone" value="<?php echo $data["post"]->created_at ?>" class="form-control"/><br>
-        <input type="submit" value="Send" class="btn btn-success"/>
+
+
+        ID: <label><?php echo $data["post"]->id ?></label><br>
+        Title: <label><?php echo $data["post"]->title ?></label><br>
+        Category: <label><?php echo $data["post"]->category_name ?></label><br>
+        Text: <label><?php echo $data["post"]->text ?></label><br>
+        Status: <label><?php echo $data["post"]->status==1?'Active':'Inactive' ?></label><br>
+        Date: <label><?php echo $data["post"]->created_at ?></label><br>
+
+
+        <a href="index.php?controller=posts&action=show_update&id=<?php echo $data["post"]->id; ?>" class="btn btn-info">Edit</a>
     </form>
 
 
@@ -25,6 +29,17 @@ Show post details with it comments ========
             <hr/>
         <?php } ?>
     <?php } ?>
+    <br>
+    <form action="index.php?controller=posts&action=create_comment" method="post">
+    Add comment to post :
+        <input type="hidden" name="id" value="<?php echo $data["post"]->id ?>">
+        <input type="hidden" name="post_id" value="<?php echo $data["post"]->id ?>">
+    name : <input type="text" name="contributor_name" /><br>
+    Email : <input type="text" name="email" /><br>
+    Comment : <input type="text" name="text" /><br>
+        <input type="submit" value="Add comment" class="btn btn-success"/>
+    </form>
+    <br>
   <h3>  May be you want to read other posts :</h3>
 
     <br>

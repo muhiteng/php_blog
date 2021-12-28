@@ -8,6 +8,7 @@ class PostsController{
 		require_once  __DIR__ . "/../core/Conectar.php";
         require_once  __DIR__ . "/../model/post.php";
         require_once  __DIR__ . "/../model/category.php";
+        require_once  __DIR__ . "/../model/comment.php";
 
         $this->conectar=new Conectar();
         $this->Connection=$this->conectar->Connection();
@@ -30,6 +31,9 @@ class PostsController{
                 break;
             case "create" :
                 $this->create();
+                break;
+            case "create_comment" :
+                $this->create_comment();
                 break;
             case "details" :
                 $this->details();
@@ -135,6 +139,27 @@ class PostsController{
             $save=$post->save();
         }
         header('Location: index.php');
+    }
+    public function create_comment(){
+        if(isset($_POST["email"])){
+
+            //Create
+            $comment=new Comment($this->Connection);
+            $comment->setcontributor_name($_POST["contributor_name"]);
+            $comment->setEmail($_POST["email"]);
+            $comment->settext(($_POST["text"]));
+            $comment->setpost_id($_POST['post_id'] );
+            $comment->setpost_id($_POST['post_id'] );
+            $comment->setparent_id(null);
+            $comment->setstatus(1);
+            $comment->setshow(1);
+            $comment->setrank(1);
+
+
+            $save=$comment->save();
+        }
+        header('Location: index.php?controller=posts&action=details&id='.$_POST['post_id']);
+
     }
     /**
      * Loads the post home page with the list of
