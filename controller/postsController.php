@@ -131,6 +131,7 @@ class PostsController{
             $post->settitle($_POST["title"]);
             $post->settext($_POST["text"]);
             $post->setcategory_id(($_POST["category_id"]));
+            session_start();
             if(isset($_SESSION['user_id'] ))
                 $post->setuser_id($_SESSION['user_id'] );
             else

@@ -53,7 +53,19 @@ class User {
         $this->role = $role;
     }
 
+    public function login(){
 
+        $consultation = $this->Connection->prepare("SELECT id,username,email FROM users WHERE email= :email and password= :password and status=1 ");
+        $result = $consultation->execute(array(
+            "email" =>trim($this->email) ,//"ali.it@gmail.com",
+            "password" => trim($this->password),//"12345",
+        ));
+
+        /* Fetch all of the remaining rows in the result set */
+        $resultados = $consultation->fetchObject();
+        $this->Connection = null; //clear connection
+        return $resultados;
+    }
     public function save(){
 
         $consultation = $this->Connection->prepare("INSERT INTO " . $this->table . " (username,email,password,role)

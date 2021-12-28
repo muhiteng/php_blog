@@ -24,6 +24,15 @@ class UsersController{
             case "index" :
                 $this->index();
                 break;
+            case "login" :
+                $this->login();
+                break;
+            case "logout" :
+                $this->logout();
+                break;
+            case "register" :
+                $this->register();
+                break;
             case "create" :
                 $this->create();
                 break;
@@ -38,14 +47,71 @@ class UsersController{
                 break;
         }
     }
-    
-   /**
+    public function login(){
+
+
+       // header('Location: index.php');
+        if(isset($_POST["email"])){
+
+            //Create
+            $user=new User($this->Connection);
+            $user->setEmail($_POST["email"]);
+            $user->setPassword(md5($_POST["password"]));
+            // $user->setPassword($_POST["password"]);
+
+            $save=$user->login();
+            session_start();
+            $_SESSION["user_id"] = $save->id;
+           $_SESSION["user_name"] = $save->username;
+            /*$this->view("index",array(
+                "user"=>$save,
+                "title" => "Users"
+            ));*/
+        }
+        if(isset($_SESSION["user_id"]))
+                header('Location: index.php');
+        else
+            header('Location: login.php');
+    }
+    public function logout(){
+
+
+        session_start();
+
+        session_unset();
+
+        session_destroy();
+
+        //  header('Location: index.php');
+           header('Location: login.php');
+    }
+    public function register(){
+        if(isset($_POST["username"])&& $_POST['password']== $_POST['cpassword']){
+
+            //Create
+            $user=new User($this->Connection);
+            $user->setUserName($_POST["username"]);
+            $user->setEmail($_POST["email"]);
+            $user->setPassword(md5($_POST["password"]));
+            $user->setRole(1);// we can provide role from select menu
+            $save=$user->save();
+            session_start();
+
+        }
+        if(isset($_SESSION["user_id"]))
+            header('Location: index.php');
+        else
+            header('Location: login.php');
+    }
+
+    /**
     * Loads the users home page with the list of
     * users getting from the model User.
     *
     */ 
     public function index(){
-        
+        $_SESSION['user_id'] ="12";
+        header('Location: index.php');
         //We create the user object
         $users=new User($this->Connection);
         
