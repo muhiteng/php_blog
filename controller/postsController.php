@@ -1,14 +1,22 @@
 <?php
+
+
+use Interfaces\PostRepositoryInterface;
+use Repository\PostRepository;
+
 class PostsController{
 
     private $conectar;
     private $Connection;
-
+    private $posts;
     public function __construct() {
 		require_once  __DIR__ . "/../core/Conectar.php";
         require_once  __DIR__ . "/../model/post.php";
         require_once  __DIR__ . "/../model/category.php";
         require_once  __DIR__ . "/../model/comment.php";
+        require_once  __DIR__ . "/../Repository/PostRepository.php";
+        require_once  __DIR__ . "/../Interfaces/PostRepositoryInterface.php";
+
 
         $this->conectar=new Conectar();
         $this->Connection=$this->conectar->Connection();
@@ -59,7 +67,10 @@ class PostsController{
     *
     */ 
     public function index(){
-        
+        //-------------------------------
+
+
+            //---------------------------------------
         //We create the post object
         $posts=new Post($this->Connection);
         
