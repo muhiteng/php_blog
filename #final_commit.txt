@@ -1,0 +1,17 @@
+Here a test MVC only for structure not concern to apeareance,
+
+I now work with advanced laravel and work on :
+1. multi authentication systems
+2.multi users system
+3.Real time , socket
+4.Ecommerce
+5.Cache management with Redus
+6.CRM systems
+7.ERP systems
+8.....
+9...
+etc
+
+I developed Blog system and i can give you link and details
+I can do any task in advanced tools
+Tanks with my respect

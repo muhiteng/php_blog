@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <a href="index.php?controller=posts&action=index" class="btn btn-info">posts</a>
 <br>
 List of Categories here: <a href="index.php?controller=categories&action=create_page" class="btn btn-info">Add new Category</a><br>
@@ -37,3 +38,5 @@ List of Categories here: <a href="index.php?controller=categories&action=create_
 </table>
 
 
+
+<?php include 'includes/footer.php'; ?>

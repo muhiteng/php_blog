@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 Show category details :
 <?php // var_dump($data["post"]); ?>
 <form action="index.php?controller=categories&action=update" method="post">
@@ -16,3 +17,5 @@ Show category details :
 
     <a href="index.php?controller=categories&action=show_update&id=<?php echo $data["category"]->id; ?>" class="btn btn-info">Edit</a>
 </form>
+
+<?php include 'includes/footer.php'; ?>

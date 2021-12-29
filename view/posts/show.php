@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 Show post details with it comments ========
 <div class="col-lg-5 mr-auto">
     <?php // var_dump($data["post"]); ?>
@@ -55,3 +56,5 @@ Show post details with it comments ========
     <?php } ?>
     <a href="index.php" class="btn btn-info">Return</a>
 </div>
+
+<?php include 'includes/footer.php'; ?>

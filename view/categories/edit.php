@@ -1,4 +1,4 @@
-
+<?php include 'includes/header.php'; ?>
 Update Category :<br>
 <form action="index.php?controller=categories&action=update" method="post">
     <h3>Category details</h3>
@@ -19,3 +19,6 @@ Update Category :<br>
 </form>
 <br>
 <a href="index.php" class="btn btn-info">Return</a>
+
+
+<?php include 'includes/footer.php'; ?>

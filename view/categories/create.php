@@ -1,4 +1,4 @@
-
+<?php include 'includes/header.php'; ?>
 Add new  post :<br>
 <form action="index.php?controller=categories&action=create" method="post">
     <h3>Post details</h3>
@@ -18,3 +18,6 @@ Add new  post :<br>
 </form>
 <br>
 <a href="index.php" class="btn btn-info">Return</a>
+
+
+<?php include 'includes/footer.php'; ?>

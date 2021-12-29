@@ -1,4 +1,5 @@
-<?php 
+<?php include 'includes/header.php'; ?>
+<?php
 
 
 session_start();
@@ -9,13 +10,6 @@ if (isset($_SESSION['user_id'])) {
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-</head>
-<body>
-
 
 <form action="index.php?controller=users&action=login" method="post">
 
@@ -34,5 +28,6 @@ if (isset($_SESSION['user_id'])) {
 </form>
 
 
-</body>
-</html>
+
+
+<?php include 'includes/footer.php'; ?>

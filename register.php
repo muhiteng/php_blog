@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <?php
 
 
@@ -9,12 +10,9 @@ if (isset($_SESSION['user_id'])) {
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <?php include 'includes/header.php'; ?>
-</head>
-<body>
+
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-5 col-12 mx-auto">
@@ -41,5 +39,4 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
